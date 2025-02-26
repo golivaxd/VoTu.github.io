@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../F')));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
+    res.sendFile(path.join(__dirname, '../F/index.html'));
 });
 
 app.get('/usuarios', async (req, res) => {
