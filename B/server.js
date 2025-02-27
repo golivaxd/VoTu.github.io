@@ -1,6 +1,7 @@
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -9,6 +10,11 @@ const port = process.env.PORT || 3001;
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Configurar CORS para permitir solicitudes desde tu dominio de Vercel
+app.use(cors({
+    origin: 'https://votu-peach.vercel.app/'
+}));
 
 app.use(express.static(path.join(__dirname, '../F')));
 app.use(express.json());
