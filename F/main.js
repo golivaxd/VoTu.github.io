@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchUsuarios() {
     try {
-        const response = await fetch('http://localhost:3001/usuarios');
+        const response = await fetch('https://votupage.onrender.com');
         const data = await response.json();
 
         console.log('Data received from server:', data);
@@ -34,7 +34,7 @@ async function fetchUsuarios() {
 
 async function login(correo_electronico, contrasena) {
     try {
-        const response = await fetch('http://localhost:3001/login', {
+        const response = await fetch('https://mi-backend.onrender.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
