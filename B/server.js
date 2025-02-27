@@ -13,7 +13,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Configurar CORS para permitir solicitudes desde tu dominio de Vercel
 app.use(cors({
-    origin: 'https://votu-peach.vercel.app/'
+    origin: 'https://votu-rouge.vercel.app/'
 }));
 
 app.use(express.static(path.join(__dirname, '../F')));
