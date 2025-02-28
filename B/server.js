@@ -12,10 +12,12 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Configurar CORS para permitir solicitudes desde tu dominio de Vercel
+const cors = require('cors');
+
 app.use(cors({
-    origin: '*', // Permitir temporalmente cualquier origen
-    methods: 'GET,POST',
-    allowedHeaders: 'Content-Type,Authorization'
+    origin: '*', // Permitir cualquier origen temporalmente
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 
