@@ -22,8 +22,11 @@ app.use(cors({
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'self'; connect-src 'self' https://votupage.onrender.com https://votu-rouge.vercel.app");
     res.setHeader("Access-Control-Allow-Origin", "https://votu-rouge.vercel.app");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
     next();
 });
 
@@ -66,5 +69,3 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
-
-
