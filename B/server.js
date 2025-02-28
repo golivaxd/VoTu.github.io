@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
@@ -13,7 +13,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Configurar CORS para permitir solicitudes desde tu dominio de Vercel
 app.use(cors({
-    origin: 'https://votu-rouge.vercel.app/'
+    origin: 'https://votu-golivas-projects.vercel.app' // Reemplaza con tu dominio de Vercel
 }));
 
 app.use(express.static(path.join(__dirname, '../F')));
