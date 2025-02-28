@@ -13,8 +13,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Configurar CORS para permitir solicitudes desde tu dominio de Vercel
 app.use(cors({
-    origin: 'https://votu-golivas-projects.vercel.app' // Reemplaza con tu dominio de Vercel
+    origin: '*', // Permitir temporalmente cualquier origen
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type,Authorization'
 }));
+
 
 app.use(express.static(path.join(__dirname, '../F')));
 app.use(express.json());
