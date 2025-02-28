@@ -13,15 +13,15 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Configurar CORS para permitir solicitudes desde tu dominio de Vercel
 app.use(cors({
-    origin: 'https://votu-golivas-projects.vercel.app', // Reemplaza con tu dominio de Vercel
+    origin: 'https://votu-rouge.vercel.app', // Reemplaza con tu dominio de Vercel
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Agregar encabezados de seguridad (CSP y CORS)
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; connect-src 'self' https://votupage.onrender.com https://votu-golivas-projects.vercel.app");
-    res.setHeader("Access-Control-Allow-Origin", "https://votu-golivas-projects.vercel.app");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; connect-src 'self' https://votupage.onrender.com https://votu-rouge.vercel.app");
+    res.setHeader("Access-Control-Allow-Origin", "https://votu-rouge.vercel.app");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     next();
@@ -66,3 +66,4 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
