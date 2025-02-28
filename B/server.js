@@ -11,15 +11,21 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Configurar CORS para permitir solicitudes desde tu dominio de Vercel
-const cors = require('cors');
-
+// ✅ Configurar CORS correctamente
 app.use(cors({
-    origin: '*', // Permitir cualquier origen temporalmente
+    origin: ['https://votu-rouge.vercel.app'], // Solo permite este dominio
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// ✅ Agregar encabezados de seguridad (CSP y CORS)
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'; connect-src https://votupage.onrender.com https://votu-rouge.vercel.app");
+    res.setHeader("Access-Control-Allow-Origin", "https://votu-rouge.vercel.app");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+});
 
 app.use(express.static(path.join(__dirname, '../F')));
 app.use(express.json());
@@ -60,3 +66,4 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
